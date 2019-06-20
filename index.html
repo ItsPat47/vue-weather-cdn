@@ -20,7 +20,7 @@
                         <li><vs-image class="weather-image " :src="`http://openweathermap.org/img/w/${parisWeather.list[0].weather[0].icon}.png`" /></li>
                         <li class="weather-description">{{parisWeather.list[0].weather[0].description}}</li> 
                         <li class="weather-temp">{{parisWeather.list[0].main.temp}}°C</li> 
-                        <li class="weather-humidity">humidity: {{parisWeather.list[0].main.humidity}}% | </li> 
+                        <li class="weather-humidity">humidity: {{parisWeather.list[0].main.humidity}}%</li> 
                         <li class="weather-wind">wind: {{parisWeather.list[0].wind.speed}} km/h</li> 
                     </vs-card>
                 </ul>
@@ -39,7 +39,7 @@
                                 <li><vs-image class="weather-image " :src="`http://openweathermap.org/img/w/${day.weather[0].icon}.png`" /></li>
                                 <li class="weather-description">{{day.weather[0].description}}</li> 
                                 <li class="weather-temp">{{day.main.temp}} °C</li> 
-                                <li class="weather-humidity">humidity: {{day.main.humidity}}% | </li>
+                                <li class="weather-humidity">humidity: {{day.main.humidity}}%</li>
                                 <li class="weather-wind">wind: {{day.wind.speed}} km/h</li> 
                             </vs-card>
                         </ul>

@@ -30,7 +30,6 @@ h1 {
 
 .weather-card {
 	display: flex;
-	align-content: center;
 	width: 300px;
 	height: 350px;
 	background: rgba(11, 105, 168, 0.295);
@@ -75,12 +74,11 @@ h1 {
 }
 
 .weather-humidity {
-	display: inline-block;
 	font-size: 16px;
+	margin-bottom: 10px;
 }
 
 .weather-wind {
-	display: inline-block;
 	font-size: 16px;
 }
 
