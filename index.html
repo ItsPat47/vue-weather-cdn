@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/vuesax/dist/vuesax.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300&display=swap" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <title>Weather of Paris</title>
+
+</head>
+    <body>
+        <div id="app">
+            <h1>Weather of {{parisWeather.city.name}} now</h1>
+            <div class="weather-info">
+                <ul class="list">
+                    <vs-card class="weather-card">
+                        <li><vs-image class="weather-image " :src="`http://openweathermap.org/img/w/${parisWeather.list[0].weather[0].icon}.png`" /></li>
+                        <li class="weather-description">{{parisWeather.list[0].weather[0].description}}</li> 
+                        <li class="weather-temp">{{parisWeather.list[0].main.temp}}°C</li> 
+                        <li class="weather-humidity">humidity: {{parisWeather.list[0].main.humidity}}% | </li> 
+                        <li class="weather-wind">wind: {{parisWeather.list[0].wind.speed}} km/h</li> 
+                    </vs-card>
+                </ul>
+            </div>
+
+            <div class="bottom-card">
+                <div class="bottomCard">
+                    <div class="next-weather-info">
+                        <p>This hour</p>
+                        <p>Next 3 hours</p>
+                        <p>Next 6 hours</p>
+                    </div>
+                    <div class="weather-info">
+                        <ul v-for="day in parisWeather.list" class="list">
+                            <vs-card class="weather-card">
+                                <li><vs-image class="weather-image " :src="`http://openweathermap.org/img/w/${day.weather[0].icon}.png`" /></li>
+                                <li class="weather-description">{{day.weather[0].description}}</li> 
+                                <li class="weather-temp">{{day.main.temp}} °C</li> 
+                                <li class="weather-humidity">humidity: {{day.main.humidity}}% | </li>
+                                <li class="weather-wind">wind: {{day.wind.speed}} km/h</li> 
+                            </vs-card>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CDN Vue -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <!-- CDN vuesax -->
+        <script src="https://unpkg.com/vuesax"></script>
+        <script>
+        const app = new Vue({
+                el: '#app',
+                data: {
+                    parisWeather: [],
+                },
+                created(){
+                    fetch('https://api.openweathermap.org/data/2.5/forecast?zip=75010,fr&cnt=3&units=metric&APPID=f3c9a39d65697fee2fee35747aeec77d')
+                    .then(response => response.json())
+                    .then (json =>{
+                        this.parisWeather = json
+                    })
+                }
+            })
+    </script>
+    </body>
+</html>
